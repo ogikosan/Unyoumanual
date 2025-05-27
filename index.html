@@ -1,629 +1,689 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>やさしい画像処理・出品作業マニュアル</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'M PLUS Rounded 1c', sans-serif;
-            background-color: #fcfcfc;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        h1, h2, h3, h4 {
-            font-weight: 700;
-        }
-        
-        h1 {
-            font-size: 2.2rem;
-            color: #5b6bbf;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        
-        h2 {
-            font-size: 1.8rem;
-            padding: 0.5rem 1rem;
-            margin: 2rem 0 1rem;
-            background: linear-gradient(to right, #a6c1ee, #fbc2eb);
-            color: #fff;
-            border-radius: 10px;
-        }
-        
-        h3 {
-            font-size: 1.4rem;
-            margin: 1.5rem 0 0.75rem;
-            padding-left: 1rem;
-            border-left: 5px solid #a6c1ee;
-            color: #5b6bbf;
-        }
-        
-        h4 {
-            font-size: 1.2rem;
-            margin: 1.2rem 0 0.6rem;
-            color: #6c757d;
-        }
-        
-        p {
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            margin: 1rem auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border: 1px solid #eaeaea;
-        }
-        
-        .step-container {
-            background-color: #fff;
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.05);
-            border-top: 5px solid;
-        }
-        
-        .step-1 {
-            border-color: #fbc2eb;
-        }
-        
-        .step-2 {
-            border-color: #a1c4fd;
-        }
-        
-        .step-3 {
-            border-color: #a6e6a1;
-        }
-        
-        .step-4 {
-            border-color: #ffd79a;
-        }
-        
-        .step-5 {
-            border-color: #b8c6db;
-        }
-        
-        .step-6 {
-            border-color: #d4a5a5;
-        }
-        
-        .step-7 {
-            border-color: #c2e9fb;
-        }
-        
-        .step-8 {
-            border-color: #a1c4fd;
-        }
-        
-        .note {
-            background-color: #fff8e6;
-            border-left: 4px solid #ffcc80;
-            padding: 0.8rem 1rem;
-            margin: 1rem 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .tip {
-            background-color: #e3f2fd;
-            border-left: 4px solid #64b5f6;
-            padding: 0.8rem 1rem;
-            margin: 1rem 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .shortcut {
-            font-family: monospace;
-            background-color: #f1f1f1;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            border: 1px solid #e0e0e0;
-            font-weight: bold;
-        }
-        
-        .toc {
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            padding: 1rem 2rem;
-            margin: 1rem 0 2rem;
-            border: 1px solid #eaeaea;
-        }
-        
-        .toc a {
-            color: #5b6bbf;
-            text-decoration: none;
-            line-height: 1.8;
-            display: block;
-        }
-        
-        .toc a:hover {
-            text-decoration: underline;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #fccb90 0%, #d57eeb 100%);
-            padding: 2rem 0;
-            margin-bottom: 2rem;
-            border-radius: 0 0 30px 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 2rem 0;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-        }
-        
-        .step-number {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            background-color: #5b6bbf;
-            color: white;
-            text-align: center;
-            border-radius: 50%;
-            margin-right: 10px;
-            font-weight: bold;
-        }
-        
-        .shortcut-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-        
-        .shortcut-table th, .shortcut-table td {
-            border: 1px solid #e0e0e0;
-            padding: 0.5rem;
-            text-align: left;
-        }
-        
-        .shortcut-table th {
-            background-color: #f1f1f1;
-            font-weight: 500;
-        }
-        
-        .shortcut-table tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <div class="container">
-            <h1 class="text-white text-center text-shadow">やさしい画像処理・出品作業マニュアル</h1>
-            <p class="text-white text-center">画像の準備から出品までを分かりやすく解説</p>
-        </div>
-    </div>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>【マニュアル】各種ツールを使った運用方法</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
 
-    <div class="container">
-        <div class="toc">
-            <h3><i class="fas fa-list"></i> 目次</h3>
-            <a href="#step1"><i class="fas fa-folder-open"></i> STEP 1: 作業用フォルダの準備</a>
-            <a href="#step2"><i class="fas fa-images"></i> STEP 2: チョイスラックを使った画像選定</a>
-            <a href="#step3"><i class="fas fa-sort"></i> STEP 3: シワケラックを使った画像仕分け</a>
-            <a href="#step4"><i class="fas fa-file-signature"></i> STEP 4: リネラックを使ったファイル名変更</a>
-            <a href="#step5"><i class="fas fa-image"></i> STEP 5: モザイク処理</a>
-            <a href="#step6"><i class="fas fa-copyright"></i> STEP 6: スカシラックを使った透かし入れ</a>
-            <a href="#step7"><i class="fas fa-shopping-cart"></i> STEP 7: オークラックを使った出品</a>
-            <a href="#step8"><i class="fas fa-redo"></i> STEP 8: 次の作業への準備</a>
-            <a href="#appendix"><i class="fas fa-book"></i> 付録: ショートカットキー一覧・注意点</a>
-        </div>
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
 
-        <div class="step-container step-1" id="step1">
-            <h2><span class="step-number">1</span> 作業用フォルダの準備</h2>
-            
-            <h3>基本フォルダの作成</h3>
-            <p>まずは作業に必要な基本フォルダを作成します。</p>
-            <ol class="list-decimal pl-6 mb-4">
-                <li>「01_出品」フォルダを作成します</li>
-                <li>「02_印刷発送」フォルダを作成します</li>
-            </ol>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/hIa97BIVOL.png" alt="基本フォルダの作成" class="mx-auto">
-            
-            <h3>ワークスペース初期化</h3>
-            <p>「01_出品」フォルダ内に、ダウンロードした「ワークスペース初期化.bat」ファイルを保存します。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/hIa97BIVOL%201.png" alt="ワークスペース初期化.bat" class="mx-auto">
-            
-            <p>「ワークスペース初期化.bat」をダブルクリックして実行します。コマンドプロンプト画面が表示されるので、<span class="shortcut">Enter</span>キーを押します。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/lny36zDTmu.png" alt="ワークスペース初期化の実行" class="mx-auto">
-            
-            <p>以下のように作業に必要なフォルダが自動で作成されます。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/ROZc76ORJV.png" alt="作成されたフォルダ" class="mx-auto">
-            
-            <div class="tip">
-                <strong><i class="fas fa-lightbulb"></i> ポイント:</strong> 「00_素材倉庫」フォルダには生成した画像を保存します。ここが素材の元となる場所です。
-            </div>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/Y1aRj2DNNs.png" alt="00_素材倉庫フォルダ" class="mx-auto">
-            <img src="https://ogikosan.github.io/Unyoumanual/O1BJ5I0U9C.png" alt="素材の保存例" class="mx-auto">
-            
-            <h3>画像の移動</h3>
-            <p>「10_作業元画像」フォルダに、「00_素材倉庫」から出品に使用する画像を移動します。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/M0bVbhwCLz.png" alt="画像の移動" class="mx-auto">
-            <img src="https://ogikosan.github.io/Unyoumanual/4b8RBXOMi5.png" alt="移動後の画像" class="mx-auto">
-        </div>
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
 
-        <div class="step-container step-2" id="step2">
-            <h2><span class="step-number">2</span> チョイスラックを使った画像選定</h2>
-            
-            <h3>チョイスラックの起動</h3>
-            <p>「チョイスラック」を起動して、画像の選定作業を行います。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/TlibwG2FY8.png" alt="チョイスラック起動" class="mx-auto">
-            
-            <h3>設定方法</h3>
-            <ol class="list-decimal pl-6 mb-4">
-                <li>管理名を新規作成します</li>
-                <li>入力フォルダには「10_作業元画像」フォルダを指定します</li>
-                <li>OKフォルダには「20_選定/OK」フォルダを指定します</li>
-                <li>NGフォルダには「20_選定/NG」フォルダを指定します</li>
-                <li>「設定保存」ボタンをクリックします</li>
-            </ol>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/zebnt6SIom.png" alt="チョイスラックの設定" class="mx-auto">
-            
-            <h3>画像選定の実行</h3>
-            <p>「画像検索(F5)」をクリックして、画像選定を開始します。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/aXYKl0mssi.png" alt="画像検索ボタン" class="mx-auto">
-            
-            <div class="tip">
-                <strong><i class="fas fa-keyboard"></i> ショートカットキー:</strong><br>
-                <span class="shortcut">K</span> : 画像をOKフォルダに振り分け<br>
-                <span class="shortcut">G</span> : 画像をNGフォルダに振り分け<br>
-                <span class="shortcut">スペース</span> : 1つ前の振り分けを元に戻す
-            </div>
-            
-            <p>OKとした画像は緑色、NGとした画像は赤色で表示されます。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/seGytrCYRl.png" alt="選定中の画面" class="mx-auto">
-            
-            <p>すべての画像選定が完了したら「選択確定(Enter)」をクリックして画像選定を完了します。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/image.png" alt="選定完了" class="mx-auto">
-        </div>
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
 
-        <div class="step-container step-3" id="step3">
-            <h2><span class="step-number">3</span> シワケラックを使った画像仕分け</h2>
-            
-            <h3>シワケラックの起動</h3>
-            <p>「シワケラック」を起動して、画像の仕分け作業を行います。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/NHNd0e8Nil.png" alt="シワケラック起動" class="mx-auto">
-            
-            <h3>設定方法</h3>
-            <ol class="list-decimal pl-6 mb-4">
-                <li>管理名を新規作成します</li>
-                <li>入力フォルダには「20_選定/OK」フォルダを指定します</li>
-                <li>未ヒットフォルダにも同じく「20_選定/OK」フォルダを指定します</li>
-                <li>「コピー」のチェックをオフにします</li>
-            </ol>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/BeFqepbxP4.png" alt="シワケラックの設定" class="mx-auto">
-            
-            <h3>仕分けルールの追加</h3>
-            <p>「ルールを追加」をクリックし、仕分けに使用するプロンプトをKW1～KW10に入力します。合わせて仕分け先フォルダも作成し、指定します。</p>
-            
-            <div class="note">
-                <strong><i class="fas fa-exclamation-circle"></i> 重要:</strong> このときのフォルダ名がオークラックを使用する際の商品名になります。ファイル名にはフォルダの先頭にある数字と番号は付きません。
-            </div>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/YFh8tc7dHk.png" alt="ルール追加" class="mx-auto">
-            <img src="https://ogikosan.github.io/Unyoumanual/0A3YmlQ0kZ.png" alt="仕分けフォルダ" class="mx-auto">
-            
-            <h3>仕分けの実行</h3>
-            <p>「保存」をクリックし、「仕分け開始」をクリックすれば画像が自動的に仕分けされます。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/VHkxqYLv3T.png" alt="仕分け実行" class="mx-auto">
-        </div>
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
 
-        <div class="step-container step-4" id="step4">
-            <h2><span class="step-number">4</span> リネラックを使ったファイル名変更</h2>
-            
-            <h3>リネラックの起動</h3>
-            <p>「リネラック」を起動して、ファイル名を一括で変更します。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/RTCTOiXepI.png" alt="リネラック起動" class="mx-auto">
-            
-            <h3>設定方法</h3>
-            <ol class="list-decimal pl-6 mb-4">
-                <li>管理名を新規作成します</li>
-                <li>アルファベットに「任意のアルファベット」を入力します</li>
-                <li>連番に「連番を開始する数字」を入力します</li>
-                <li>連番の桁数を設定します</li>
-                <li>連番の位置を「ファイル名の先頭」か「ファイル名の最後方」から選びます</li>
-                <li>入力フォルダには「30_仕分け」フォルダを指定します</li>
-                <li>出力フォルダには「40_リネーム済み」フォルダを指定します</li>
-                <li>「サブフォルダ構成を維持する」のチェックをオフにします</li>
-            </ol>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/ujcp43juB0.png" alt="リネラックの設定" class="mx-auto">
-            
-            <h3>リネームの実行</h3>
-            <ol class="list-decimal pl-6 mb-4">
-                <li>「プレビュー更新」をクリックします</li>
-                <li>「保存(Ctrl+S)」をクリックします</li>
-                <li>「処理開始(F5)」をクリックしてリネームを実行します</li>
-            </ol>
-            
-            <p>一瞬でリネームが完了します。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/image%201.png" alt="リネーム完了" class="mx-auto">
-            <img src="https://ogikosan.github.io/Unyoumanual/67W3WaJy6z.png" alt="リネーム後のファイル" class="mx-auto">
-        </div>
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
 
-        <div class="step-container step-5" id="step5">
-            <h2><span class="step-number">5</span> モザイク処理</h2>
-            
-            <h3>5-1. 自動モザイク処理（オプション）</h3>
-            <p>自動モザイクツールをお持ちの場合は、以下の手順で自動モザイク処理を行います。</p>
-            
-            <div class="note">
-                <strong><i class="fas fa-info-circle"></i> 注意:</strong> 自動モザイクツールをお持ちでない方は、このステップをスキップして「5-2. モザラックを使った手動モザイク処理」に進んでください。
-            </div>
-            
-            <p>自動モザイクツールを起動します。</p>
-            <img src="https://ogikosan.github.io/Unyoumanual/z9Vd004uSs.png" alt="自動モザイクツール起動" class="mx-auto">
-            
-            <p>以下の設定を行います：</p>
-            <ul class="list-disc pl-6 mb-4">
-                <li>モザイク対象フォルダ：「40_リネーム済み」フォルダ</li>
-                <li>モザイク画像保存フォルダ：「50_モザイク自動」フォルダ</li>
-                <li>その他の設定は自動モザイクツールのマニュアルに従って設定してください</li>
-            </ul>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/Q7aKzjGZV2.png" alt="自動モザイク設定" class="mx-auto">
-            
-            <p>「実行」をクリックしてモザイク処理を開始します。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/8Ltl8s3k7E.png" alt="自動モザイク実行" class="mx-auto">
-            
-            <h3>5-2. モザラックを使った手動モザイク処理</h3>
-            <p>「モザラック」を起動して、細かいモザイク調整を手動で行います。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/rswmIcpoMA.png" alt="モザラック起動" class="mx-auto">
-            
-            <h4>設定方法</h4>
-            <ol class="list-decimal pl-6 mb-4">
-                <li>管理名を新規作成します</li>
-                <li>入力フォルダ：
-                    <ul class="list-disc pl-6">
-                        <li>自動モザイクツールを使用した場合：「50_モザイク自動」フォルダ</li>
-                        <li>自動モザイクツールを使用しなかった場合：「40_リネーム済み」フォルダ</li>
-                    </ul>
-                </li>
-                <li>出力フォルダには「51_モザイク完了」フォルダを指定します</li>
-                <li>その他の項目はご自身の好みで設定し、「保存」をクリックします</li>
-            </ol>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/EiQzBG0dH4.png" alt="モザラックの設定" class="mx-auto">
-            
-            <h4>モザイク処理</h4>
-            <p>マウス操作でモザイクをかけます。</p>
-            
-            <div class="tip">
-                <strong><i class="fas fa-keyboard"></i> ショートカットキー:</strong><br>
-                <span class="shortcut">F</span> : 次の画像に進む<br>
-                <span class="shortcut">A</span> : 前の画像に戻る<br>
-                <span class="shortcut">Ctrl+Z</span> : 直前の処理を元に戻す<br>
-                <span class="shortcut">Ctrl+G</span> : 現在の画像の編集をすべてリセット
-            </div>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/GKmKEGzv8F.png" alt="モザイク編集中" class="mx-auto">
-            
-            <p>すべてのモザイク処理が完了したら、「保存」をクリックし、「仕分け開始」をクリックして画像を保存します。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/aJQzTTewd0.png" alt="モザイク処理完了" class="mx-auto">
-        </div>
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
 
-        <div class="step-container step-6" id="step6">
-            <h2><span class="step-number">6</span> スカシラックを使った透かし入れ</h2>
-            
-            <h3>スカシラックの起動</h3>
-            <p>「スカシラック」を起動して、画像に透かしを入れる作業を行います。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/0DysvW4t4u.png" alt="スカシラック起動" class="mx-auto">
-            
-            <h3>設定方法</h3>
-            <ol class="list-decimal pl-6 mb-4">
-                <li>管理名を新規作成します</li>
-                <li>入力フォルダには「51_モザイク完了」フォルダを指定します</li>
-                <li>出力フォルダには「60_出品画像」フォルダを指定します</li>
-                <li>その他の項目はご自身の好みで設定し、「保存」をクリックします</li>
-            </ol>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/pvrf1vHkYq.png" alt="スカシラックの設定" class="mx-auto">
-            
-            <h3>透かし入れの実行</h3>
-            <p>設定後、「実行」をクリックします。処理が完了すると、すべての画像に透かしが入ります。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/image%202.png" alt="透かし処理後" class="mx-auto">
-            <img src="https://ogikosan.github.io/Unyoumanual/77FgEcf3I4.png" alt="透かし入りの画像" class="mx-auto">
-        </div>
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
 
-        <div class="step-container step-7" id="step7">
-            <h2><span class="step-number">7</span> オークラックを使った出品</h2>
-            
-            <h3>オークラックの起動</h3>
-            <p>「オークラック」を起動して、ヤフオクに出品する作業を行います。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/kPvH9BC57V.png" alt="オークラック起動" class="mx-auto">
-            
-            <div class="note">
-                <strong><i class="fas fa-exclamation-triangle"></i> 重要事項:</strong> 出品に際しては事前に最低1つ出品の下書きが必要です。詳しくはオークラックのマニュアルを参照してください。
-            </div>
-            
-            <h3>設定方法</h3>
-            <ol class="list-decimal pl-6 mb-4">
-                <li>管理名を新規作成します</li>
-                <li>商品画像フォルダに「60_出品画像」フォルダを指定します</li>
-            </ol>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/82PW8Toy3Y.png" alt="オークラックの設定" class="mx-auto">
-            
-            <h3>出品の実行</h3>
-            <p>「出品開始」をクリックすると、ヤフオクへの出品が自動でスタートします。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/BOBjfIvR7K.png" alt="出品開始" class="mx-auto">
-        </div>
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
 
-        <div class="step-container step-8" id="step8">
-            <h2><span class="step-number">8</span> 次の作業への準備</h2>
-            
-            <h3>ワークスペース初期化の実行</h3>
-            <p>次の作業に進む際には「ワークスペース初期化.bat」を実行します。これにより作業に使用したフォルダが整理されるとともに、重要なファイルがバックアップされます。</p>
-            
-            <div class="tip">
-                <strong><i class="fas fa-lightbulb"></i> ポイント:</strong> 「ワークスペース初期化.bat」を実行すると「40_リネーム済」にある画像が「80_リネーム保管庫」にバックアップされます。また、「90_履歴」フォルダに「10_作業元フォルダ」～「60_出品画像」フォルダがバックアップされるため、過去の作業内容を確認することができます。
-            </div>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/BtN18zz50y.png" alt="ワークスペース初期化実行" class="mx-auto">
-            
-            <h3>バックアップフォルダの確認</h3>
-            <p>初期化後、以下のフォルダにバックアップが保存されていることを確認しましょう。</p>
-            
-            <img src="https://ogikosan.github.io/Unyoumanual/K4b3kGcWEl.png" alt="バックアップフォルダ" class="mx-auto">
-            <img src="https://ogikosan.github.io/Unyoumanual/ga6XjmPOli.png" alt="履歴フォルダ" class="mx-auto">
-            
-            <div class="note">
-                <strong><i class="fas fa-exclamation-circle"></i> 重要:</strong> バックアップは定期的に別の場所にコピーしておくことをおすすめします。長期間作業を続けると、バックアップフォルダのサイズが大きくなることがあります。
-            </div>
-            
-            <h3>作業サイクルの完了</h3>
-            <p>これで一連の作業サイクルが完了しました。次の出品作業を行う際は、再び「00_素材倉庫」から画像を「10_作業元画像」フォルダに移動させ、Step2から作業を始めます。</p>
-            
-            <div class="tip">
-                <strong><i class="fas fa-check-circle"></i> まとめ:</strong> この一連の流れで処理することで、ヤフオクの出品がスムーズに効率よく行えます。繰り返し作業を行うことで、作業スピードもどんどん向上していきます。
-            </div>
-        </div>
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
 
-        <div class="step-container" id="appendix" style="border-top-color: #d8aaff;">
-            <h2><i class="fas fa-book"></i> 付録: ショートカットキー一覧・注意点</h2>
-            
-            <h3>ショートカットキー一覧</h3>
-            <table class="shortcut-table">
-                <thead>
-                    <tr>
-                        <th>ツール</th>
-                        <th>キー</th>
-                        <th>機能</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td rowspan="3">チョイスラック</td>
-                        <td><span class="shortcut">K</span></td>
-                        <td>OKフォルダへ画像を振り分け</td>
-                    </tr>
-                    <tr>
-                        <td><span class="shortcut">G</span></td>
-                        <td>NGフォルダへ画像を振り分け</td>
-                    </tr>
-                    <tr>
-                        <td><span class="shortcut">スペース</span></td>
-                        <td>1つ前の振り分けを元に戻す</td>
-                    </tr>
-                    <tr>
-                        <td rowspan="2">リネラック</td>
-                        <td><span class="shortcut">F5</span></td>
-                        <td>処理開始</td>
-                    </tr>
-                    <tr>
-                        <td><span class="shortcut">Ctrl+S</span></td>
-                        <td>設定保存</td>
-                    </tr>
-                    <tr>
-                        <td rowspan="4">モザラック</td>
-                        <td><span class="shortcut">F</span></td>
-                        <td>次の画像に進む</td>
-                    </tr>
-                    <tr>
-                        <td><span class="shortcut">A</span></td>
-                        <td>前の画像に戻る</td>
-                    </tr>
-                    <tr>
-                        <td><span class="shortcut">Ctrl+Z</span></td>
-                        <td>直前の処理を元に戻す</td>
-                    </tr>
-                    <tr>
-                        <td><span class="shortcut">Ctrl+G</span></td>
-                        <td>現在の画像の編集をすべてリセット</td>
-                    </tr>
-                    <tr>
-                        <td>共通</td>
-                        <td><span class="shortcut">Enter</span></td>
-                        <td>選択確定/実行</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <h3>フォルダ構成のまとめ</h3>
-            <ul class="list-disc pl-6 mb-4">
-                <li><strong>00_素材倉庫</strong>: 生成した画像を保存する場所</li>
-                <li><strong>10_作業元画像</strong>: 出品に使用する画像を移動する場所</li>
-                <li><strong>20_選定/OK</strong>: 選定でOKとした画像が保存される場所</li>
-                <li><strong>20_選定/NG</strong>: 選定でNGとした画像が保存される場所</li>
-                <li><strong>30_仕分け</strong>: シワケラックで仕分けた画像が保存される場所</li>
-                <li><strong>40_リネーム済み</strong>: リネームが完了した画像が保存される場所</li>
-                <li><strong>50_モザイク自動</strong>: 自動モザイク処理が完了した画像が保存される場所</li>
-                <li><strong>51_モザイク完了</strong>: 手動モザイク処理が完了した画像が保存される場所</li>
-                <li><strong>60_出品画像</strong>: 透かし入れが完了し、出品に使用する画像が保存される場所</li>
-                <li><strong>80_リネーム保管庫</strong>: 「ワークスペース初期化.bat」実行時に「40_リネーム済み」の画像がバックアップされる場所</li>
-                <li><strong>90_履歴</strong>: 「ワークスペース初期化.bat」実行時に作業フォルダがバックアップされる場所</li>
-            </ul>
-            
-            <h3>作業の注意点</h3>
-            <div class="note">
-                <ol class="list-decimal pl-6 mb-0">
-                    <li>作業前に必ずファイルのバックアップを取っておきましょう</li>
-                    <li>各ツールの設定内容を間違えると、ファイルが予期しない場所に移動することがあります</li>
-                    <li>大量の画像を処理する場合は、少しずつ分けて作業すると安全です</li>
-                    <li>オークラックを使用する前に、ヤフオクの下書き設定を確認しておきましょう</li>
-                    <li>画像サイズが大きすぎると処理に時間がかかることがあります。必要に応じて事前にサイズを調整しておくと効率的です</li>
-                    <li>定期的にバックアップフォルダの容量を確認し、必要に応じて整理しましょう</li>
-                </ol>
-            </div>
-            
-            <h3>効率的な作業のためのヒント</h3>
-            <div class="tip">
-                <ul class="list-disc pl-6 mb-0">
-                    <li>毎回同じ設定を使う場合は、各ツールの設定を保存しておくと便利です</li>
-                    <li>画像選定は目が疲れやすい作業です。適度に休憩を取りながら行いましょう</li>
-                    <li>出品する商品のジャンルごとにフォルダを分けておくと、後で管理しやすくなります</li>
-                    <li>作業の流れに慣れてきたら、バッチ処理の自動化も検討してみるとさらに効率アップします</li>
-                    <li>ワークスペース初期化は、必ず作業が完全に終わってから実行しましょう</li>
-                    <li>90_履歴フォルダは定期的に確認し、不要なバックアップは削除して容量を節約しましょう</li>
-                </ul>
-            </div>
-        </div>
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
 
-        <div class="footer">
-            <p>このマニュアルを参考に、効率よく画像処理と出品作業を行いましょう！</p>
-            <p class="text-sm text-gray-500">やさしい画像処理・出品作業マニュアル</p>
-        </div>
-    </div>
-</body>
-</html>
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1fdcdc0a-66a6-806d-89be-c13450cb3d3c" class="page sans"><header><h1 class="page-title">【マニュアル】各種ツールを使った運用方法</h1><p class="page-description"></p></header><div class="page-body"><p id="1fdcdc0a-66a6-809b-b6ed-dd45a5e1b5a9" class="">まず作業用フォルダの下に「01_出品」フォルダを作成します。</p><figure id="1fdcdc0a-66a6-80c5-af92-da83612302ff" class="image"><a href="3WqmR7okgV.png"><img style="width:709.9500122070312px" src="3WqmR7okgV.png"/></a></figure><p id="1fdcdc0a-66a6-8052-822e-c4417fac8853" class="">
+</p><p id="1fdcdc0a-66a6-80d4-8ac8-c0efec4a5aa0" class="">次に出品フォルダの中にダウンロードしてきた「ワークスペース初期化.bat」と「init_workspace.ps1」を保存します。</p><figure id="200cdc0a-66a6-80da-aad5-cc63f619fa49" class="image"><a href="dN0A6UgxNq.png"><img style="width:709.9500122070312px" src="dN0A6UgxNq.png"/></a></figure><p id="1fdcdc0a-66a6-80f6-a0f8-c1a372afdce3" class="">次に「ワークスペース初期化.bat」を実行します。</p><p id="1fdcdc0a-66a6-80b0-80e5-fa558999709b" class="">コマンドプロンプト画面が表示されるので、実行する場合はYを入力してENTERキーを押します、やめる場合はNキーを入力してENTERキーを押します。</p><figure id="200cdc0a-66a6-80f5-844c-c8c1f55053c2" class="image"><a href="wGPsgfxoNO.png"><img style="width:709.984619140625px" src="wGPsgfxoNO.png"/></a></figure><p id="1fdcdc0a-66a6-80e6-9070-f88a92025fd3" class="">作業に必要となるフォルダが作成されます。</p><figure id="200cdc0a-66a6-8097-9c08-ecf315d8dc02" class="image"><a href="JnmTGVnk5h.png"><img style="width:709.984619140625px" src="JnmTGVnk5h.png"/></a></figure><p id="1fdcdc0a-66a6-8022-b22d-e389309cd24b" class="">00_素材倉庫には生成した画像を保存します。</p><figure id="200cdc0a-66a6-806c-b3b5-e0616548833f" class="image"><a href="tSSkjzw5OV.png"><img style="width:377.98846435546875px" src="tSSkjzw5OV.png"/></a></figure><p id="1fdcdc0a-66a6-80e3-a74b-fd8beb194748" class="">
+</p><figure id="1fdcdc0a-66a6-80a3-8d7b-f7be5b4661ba" class="image"><a href="O1BJ5I0U9C.png"><img style="width:2053px" src="O1BJ5I0U9C.png"/></a></figure><p id="1fdcdc0a-66a6-8088-8641-e8633ed1e49a" class="">10_作業元画像に00_素材倉庫から出品に使用する画像を移動します。</p><figure id="200cdc0a-66a6-805d-8d8b-f36972eea806" class="image"><a href="njh3m076es.png"><img style="width:369px" src="njh3m076es.png"/></a></figure><figure id="1fdcdc0a-66a6-80ef-8fdb-e029f2f304e3" class="image"><a href="4b8RBXOMi5.png"><img style="width:2069px" src="4b8RBXOMi5.png"/></a></figure><p id="1fdcdc0a-66a6-809e-8dd2-f918c3645d87" class="">「チョイスラック」を起動します。</p><figure id="1fdcdc0a-66a6-80c6-913a-c0ca07ce4cd2" class="image"><a href="TlibwG2FY8.png"><img style="width:285.98077392578125px" src="TlibwG2FY8.png"/></a></figure><p id="1fdcdc0a-66a6-8084-a07e-cab037074bb0" class="">管理名を新規作成し、入力フォルダには「10_作業元画像」フォルダ、OKフォルダには「20_選定/OK」フォルダ、NGフォルダには「20_選定/NG」フォルダを設定し、設定保存します。</p><figure id="1fdcdc0a-66a6-8003-bb56-fc4c2b474f14" class="image"><a href="zebnt6SIom.png"><img style="width:709.9730834960938px" src="zebnt6SIom.png"/></a></figure><p id="1fdcdc0a-66a6-809b-89a7-df9eacdfc40b" class="">画像検索(F5)をクリックし、画像選定を進めます。</p><figure id="1fdcdc0a-66a6-8060-aaeb-f50a36592df6" class="image"><a href="aXYKl0mssi.png"><img style="width:709.9615478515625px" src="aXYKl0mssi.png"/></a></figure><p id="1fdcdc0a-66a6-8053-a239-ffd0a07513f8" class="">キーボードのKでOKフォルダへ、GでNGフォルダへ振り分けられます。振り分けを1つ前に戻りたい場合にはスペースを押します。</p><p id="1fdcdc0a-66a6-8024-95dd-f959481f19d1" class="">OKとしたものは緑、NGとしたものは赤で表示されます。</p><figure id="1fdcdc0a-66a6-8019-a762-f7dd7f06ae96" class="image"><a href="seGytrCYRl.png"><img style="width:709.984619140625px" src="seGytrCYRl.png"/></a></figure><p id="1fdcdc0a-66a6-806f-9c27-f64d4a65e705" class="">すべての画像選定が完了したら選択確定(Enter)をクリックし画像選定が完了します。</p><figure id="1fdcdc0a-66a6-8082-9659-c2c54da8feae" class="image"><a href="image.png"><img style="width:709.9730834960938px" src="image.png"/></a></figure><p id="1fdcdc0a-66a6-80da-8aeb-ff26ff6ad65f" class="">次にシワケラックを起動します。</p><figure id="1fdcdc0a-66a6-80d4-9ec2-e23bf75048d9" class="image"><a href="NHNd0e8Nil.png"><img style="width:280.984619140625px" src="NHNd0e8Nil.png"/></a></figure><p id="1fdcdc0a-66a6-80ac-a6e7-c4100ef6d28d" class="">管理名を新規作成し、入力フォルダには「20_選定/OK」フォルダ、未ヒットフォルダにも「20_選定/OK」フォルダを設定し、コピーの箇所はチェックオフにします。</p><figure id="1fdcdc0a-66a6-8022-bfa4-d7fa543db40a" class="image"><a href="BeFqepbxP4.png"><img style="width:709.9730834960938px" src="BeFqepbxP4.png"/></a></figure><p id="1fdcdc0a-66a6-8056-bd2c-ec861b88ff25" class="">ルールを追加をクリックし、仕分けに使用するプロンプトをKW1～KW10に入力します。<br/>合わせて仕分け先フォルダも必要なので作成し、フォルダ指定します。<br/></p><p id="1fdcdc0a-66a6-80f4-95f7-ff8efffb51e1" class="">このときのフォルダ名がオークラックを使用した際の商品名になります。ファイル名にはフォルダの先頭にある数字と番号は付きません。</p><figure id="1fdcdc0a-66a6-80b1-a89b-e2c7802996f6" class="image"><a href="YFh8tc7dHk.png"><img style="width:372.98077392578125px" src="YFh8tc7dHk.png"/></a></figure><p id="1fdcdc0a-66a6-8043-a1ff-f0bdaf20de1c" class="">
+</p><figure id="1fdcdc0a-66a6-806d-97ad-f4767341b0ce" class="image"><a href="0A3YmlQ0kZ.png"><img style="width:2560px" src="0A3YmlQ0kZ.png"/></a></figure><p id="1fdcdc0a-66a6-80d0-9b23-c62cc209de20" class="">あとは保存をクリックし、仕分け開始をクリックすれば画像が仕分けされます。</p><figure id="1fdcdc0a-66a6-8004-a7a1-c739323c6fd6" class="image"><a href="VHkxqYLv3T.png"><img style="width:709.9615478515625px" src="VHkxqYLv3T.png"/></a></figure><p id="1fdcdc0a-66a6-800e-a003-d38e0a9b5ed1" class="">次にリネラックを起動します。</p><figure id="1fdcdc0a-66a6-80ef-b07d-c23a255eae3f" class="image"><a href="RTCTOiXepI.png"><img style="width:271.984619140625px" src="RTCTOiXepI.png"/></a></figure><p id="1fdcdc0a-66a6-80ca-bae9-ccd3b6b41195" class="">管理名を新規作成し、アルファベットに「任意のアルファベット」、連番に「連番を開始する数字」、連番の桁数には「桁数」、連番の位置は「ファイル名の先頭」か「ファイル名の最後方」を選択、入力フォルダには「30_仕分け」フォルダ、出力フォルダには「40_リネーム済み」フォルダを設定し、サブフォルダ構成を維持するの箇所はチェックオフにします。</p><figure id="1fdcdc0a-66a6-801d-90f7-e14d71b82123" class="image"><a href="ujcp43juB0.png"><img style="width:709.9730834960938px" src="ujcp43juB0.png"/></a></figure><p id="1fdcdc0a-66a6-80d0-88b5-eb01e1e276f3" class="">プレビュー更新をクリック、保存(Ctrl+S)をクリックしたあと処理開始(F5)を実行します。<br/>一瞬でリネームが完了します。<br/></p><figure id="1fdcdc0a-66a6-80aa-af8e-fe2737d257c8" class="image"><a href="image%201.png"><img style="width:709.984619140625px" src="image%201.png"/></a></figure><figure id="1fdcdc0a-66a6-8085-b5fe-f20a45f8fd7f" class="image"><a href="67W3WaJy6z.png"><img style="width:709.9730834960938px" src="67W3WaJy6z.png"/></a></figure><p id="1fdcdc0a-66a6-803b-b049-f01a97f3f222" class="">次に自動モザイクツールを起動します。自動モザイクツールを持ってないからはスキップしてください</p><figure id="1fdcdc0a-66a6-80da-8234-ebd0877ced3e" class="image"><a href="z9Vd004uSs.png"><img style="width:231.98077392578125px" src="z9Vd004uSs.png"/></a></figure><p id="1fdcdc0a-66a6-8075-8e4c-dd6a5a0c23fb" class="">モザイク対象フォルダに「40_リネーム済み」フォルダ、モザイク画像保存フォルダに「50_モザイク自動」フォルダに、黒/白塗り画像フォルダに「52_黒塗り自動」フォルダを指定してください。その他は自動モザイクツールのマニュアルに従い設定してください。</p><figure id="1fdcdc0a-66a6-80c7-99d8-f0af989cb220" class="image"><a href="Q7aKzjGZV2.png"><img style="width:709.984619140625px" src="Q7aKzjGZV2.png"/></a></figure><p id="1fdcdc0a-66a6-8071-91c7-d0497b0133dd" class="">実行をクリックしモザイクをかけます。</p><figure id="1fdcdc0a-66a6-80c1-b29c-de39ddc22df9" class="image"><a href="8Ltl8s3k7E.png"><img style="width:709.9730834960938px" src="8Ltl8s3k7E.png"/></a></figure><p id="1fdcdc0a-66a6-8079-a02a-caeeec9b174c" class="">次に「モザラック」を起動します。</p><figure id="1fdcdc0a-66a6-80a9-bcd8-fbe0ff5c7e0e" class="image"><a href="rswmIcpoMA.png"><img style="width:229.99615478515625px" src="rswmIcpoMA.png"/></a></figure><p id="1fdcdc0a-66a6-8011-8339-d50895a88ec7" class="">管理名を新規作成し、入力フォルダに「50_モザイク自動」フォルダ、出力フォルダに「51_モザイク完了」フォルダを設定し保存します。その他の項目はご自身の好みで設定してください。</p><p id="200cdc0a-66a6-8082-be59-ea90e7bee45c" class="">※自動モザイクツールで黒/白塗り処理をした方は入力フォルダに「52_黒塗り自動」を指定、出力フォルダに「53_黒塗り完了」を指定してください。</p><p id="1fdcdc0a-66a6-8038-a727-e459051d1473" class="">※自動モザイクツールをスキップした方は入力フォルダに「40_リネーム済み」フォルダを指定してください。</p><figure id="1fdcdc0a-66a6-80f2-a3e5-ceb64a64cfad" class="image"><a href="EiQzBG0dH4.png"><img style="width:709.984619140625px" src="EiQzBG0dH4.png"/></a></figure><p id="1fdcdc0a-66a6-8096-87e7-e14649f9756d" class="">マウス操作でモザイクをかけます。次の画像に進む際には「F」、前の画像に戻る場合には「A」、直前の処理を元に戻す場合には「Ctrl+Z」、現在の画像の編集をすべてリセットする際には「Ctrl+G」を実行してください。</p><figure id="1fdcdc0a-66a6-80b5-820e-c4b1b41d34ec" class="image"><a href="GKmKEGzv8F.png"><img style="width:2560px" src="GKmKEGzv8F.png"/></a></figure><p id="1fdcdc0a-66a6-8046-b107-dafa0f19c56e" class="">すべてのモザイク処理が完了するととは保存をクリックし、仕分け開始をクリックすれば画像が仕分けされます。</p><figure id="1fdcdc0a-66a6-8013-8871-fb8698c869dc" class="image"><a href="aJQzTTewd0.png"><img style="width:709.9615478515625px" src="aJQzTTewd0.png"/></a></figure><p id="1fdcdc0a-66a6-808c-ac9f-e19b097e09f3" class="">次に「スカシラック」を起動します。</p><figure id="1fdcdc0a-66a6-80ca-828b-defd84335171" class="image"><a href="0DysvW4t4u.png"><img style="width:284.98846435546875px" src="0DysvW4t4u.png"/></a></figure><p id="1fdcdc0a-66a6-80db-a585-dfb151a0b0ae" class="">管理名を新規作成し、入力フォルダに「51_モザイク完了」フォルダ、出力フォルダに「60_出品画像」フォルダを設定し保存します。その他の項目はご自身の好みで設定してください。</p><p id="200cdc0a-66a6-8045-8336-ffea13d5debe" class="">※自動モザイクツールで黒/白塗り処理をした方は入力フォルダに「53_黒塗り完了」を指定、出力フォルダに「60_出品画像」を指定してください。</p><p id="1fdcdc0a-66a6-8094-8581-d0b85d6c6800" class="">設定後、実行します。</p><figure id="1fdcdc0a-66a6-8004-a917-f7c0c99a0d00" class="image"><a href="pvrf1vHkYq.png"><img style="width:709.984619140625px" src="pvrf1vHkYq.png"/></a></figure><p id="1fdcdc0a-66a6-8058-a0b3-fd0e682b1b15" class="">処理が完了しすべての画像に透かしが入ります。</p><figure id="1fdcdc0a-66a6-8006-bcec-ecef046b365b" class="image"><a href="image%202.png"><img style="width:709.984619140625px" src="image%202.png"/></a></figure><figure id="1fdcdc0a-66a6-8072-8076-e4dcedc22661" class="image"><a href="77FgEcf3I4.png"><img style="width:709.9730834960938px" src="77FgEcf3I4.png"/></a></figure><p id="1fdcdc0a-66a6-80db-b4f9-e5c414d28d7e" class="">次にオークラックを起動します。</p><figure id="1fdcdc0a-66a6-809a-9d3b-cfc11f637aab" class="image"><a href="kPvH9BC57V.png"><img style="width:278.98846435546875px" src="kPvH9BC57V.png"/></a></figure><p id="1fdcdc0a-66a6-8002-ab43-d097912870a7" class="">
+</p><p id="1fdcdc0a-66a6-80ff-bd2b-c0de0bb773d7" class="">管理名を新規作成し、商品画像フォルダに「60_出品画像」フォルダを指定してください。</p><p id="1fdcdc0a-66a6-8028-83da-f45634b1045f" class="">※出品に際しては事前に最低1つ出品の下書きが必要です。詳しくはオークラックのマニュアルを参照してください。</p><figure id="1fdcdc0a-66a6-8090-aab5-daa4828547d0" class="image"><a href="82PW8Toy3Y.png"><img style="width:709.984619140625px" src="82PW8Toy3Y.png"/></a></figure><p id="1fdcdc0a-66a6-8087-824c-e81a4bb6e7b7" class="">あとは出品開始をクリックすればヤフオクへの出品が自動でスタートします。</p><figure id="1fdcdc0a-66a6-80dd-9e18-c1fe64bf080a" class="image"><a href="BOBjfIvR7K.png"><img style="width:709.984619140625px" src="BOBjfIvR7K.png"/></a></figure><p id="1fecdc0a-66a6-8044-b473-ede1d4e63368" class="">
+</p><p id="1fdcdc0a-66a6-8043-b9c6-de89d122ff89" class="">次の作業に進む際には「ワークスペース初期化.bat」を実行します。<br/>「ワークスペース初期化.bat」を実行することで「40_リネーム済」にある画像が「80_リネーム保管庫」に、「51_モザイク完了」にある画像が「81_モザイク完了保管庫」に「53_黒塗り完了」にある画像が「82_黒塗り完了保管庫」にバックアップされます。また、「90_履歴」フォルダに「10_作業元フォルダ」、「40_リネーム済み」、「50_モザイク自動」、「51_モザイク完了」、「黒塗り自動」、「黒塗り完了」、「60_出品画像」フォルダがバックアップされます。<br/></p><figure id="200cdc0a-66a6-8086-9b71-d15ba274f242" class="image"><a href="9QrH8WEYMu.png"><img style="width:367.984619140625px" src="9QrH8WEYMu.png"/></a></figure><figure id="200cdc0a-66a6-8028-ad52-fa042c812282" class="image"><a href="Ga2ZEXw5RR.png"><img style="width:709.9730834960938px" src="Ga2ZEXw5RR.png"/></a></figure><figure id="200cdc0a-66a6-80fa-9e14-c17ab5f9c66c" class="image"><a href="Z8GVCPqkWA.png"><img style="width:709.9615478515625px" src="Z8GVCPqkWA.png"/></a></figure><p id="1fecdc0a-66a6-8090-91f3-d98b2c82ec6c" class="">
+</p><p id="1fecdc0a-66a6-8057-ba9d-d321dc84f04f" class="">この一連の流れで処理することでヤフオクの出品がスムーズに効率よく行えます。</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
